@@ -1,16 +1,14 @@
-/* home.component.css */
-
 .container {
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+  justify-content: center; 
+  align-items: center;
   margin: 9% 7%;
 
 }
 
 .content {
   display: flex;
-  align-items: center; /* Center vertically */
+  align-items: center;
 }
 
 .photo img {
