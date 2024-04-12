@@ -13,16 +13,11 @@ export class AppComponent {
 
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
-    
-    // Get menu element
+   
     const menu = this.el.nativeElement.querySelector('.menu');
-
-    // Toggle menu animation
     if (this.isMenuOpen) {
-      // Scale the menu to its normal size
       gsap.to(menu, { duration: 0.3, scale: 1 });
     } else {
-      // Scale the menu down to hide it
       gsap.to(menu, { duration: 0.3, scale: 0 });
     }
   }
