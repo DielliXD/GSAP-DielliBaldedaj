@@ -5,7 +5,7 @@ header {
   
   nav {
     display: flex;
-    justify-content: center; /* Align items in the center horizontally */
+    justify-content: center;
     align-items: center;
   }
   
@@ -14,7 +14,7 @@ header {
     padding: 0;
     margin: 0;
     display: flex;
-    justify-content: center; /* Align items in the center horizontally */
+    justify-content: center; 
   }
   
   nav ul li {
