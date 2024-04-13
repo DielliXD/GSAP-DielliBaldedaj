@@ -1,4 +1,4 @@
-import { Component, Renderer2, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { gsap } from 'gsap';
 
 @Component({
@@ -6,25 +6,33 @@ import { gsap } from 'gsap';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  title(title: any) {
+    throw new Error('Method not implemented.');
+  }
   isMenuOpen: boolean = false;
 
-  constructor(private renderer: Renderer2, private el: ElementRef) {}
+  constructor(private el: ElementRef) {}
 
-  toggleMenu(): void {
-    this.isMenuOpen = !this.isMenuOpen;
-    
-    // Get menu element
+  ngOnInit(): void {
     const menu = this.el.nativeElement.querySelector('.menu');
+    const logoText = this.el.nativeElement.querySelector('.logo p');
 
-    // Toggle menu animation
-    if (this.isMenuOpen) {
-      // Scale the menu to its normal size
-      gsap.to(menu, { duration: 0.3, scale: 1 });
-    } else {
-      // Scale the menu down to hide it
-      gsap.to(menu, { duration: 0.3, scale: 0 });
-    }
-  }
+    gsap.from(menu, { opacity: 0, x: 20, duration: 2, ease: 'power2.out' });
 
+    const textContent = logoText.textContent.trim();
+    logoText.textContent = '';
+
+    const letters = textContent.split('');
+    letters.forEach((letter: string, index: number) => {
+      const span = document.createElement('span');
+      span.textContent = letter;
+      span.style.opacity = '0';
+      span.style.display = 'inline-block';
+      logoText.appendChild(span);
+
+      gsap.to(span, { opacity: 1, duration: 0.5, delay: index * 0.08 });
+    });
+  }
+  
 }
