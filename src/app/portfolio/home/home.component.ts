@@ -1,7 +1,6 @@
 import { Component, AfterViewInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { gsap } from 'gsap';
-import { Draggable } from 'gsap/all';
 
 @Component({
   selector: 'app-home',
@@ -26,7 +25,7 @@ export class HomeComponent implements AfterViewInit {
     gsap.from('.text', { opacity: 0, x: 100, duration: 1, delay: 1 });
     gsap.from('.card-container', {
       opacity: 0,
-      y: 50,
+      y: 35,
       stagger: 0.2,
       duration: 1,
       ease: 'power2.out',

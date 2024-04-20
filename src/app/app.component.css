@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+    font-family: "Poppins" , sans-serif;
+}
 header {
   padding: 10px 20px;
   display: flex;
@@ -12,7 +16,6 @@ header {
   font-weight: bold;
   font-size: 20px;
   color: #333; 
-
 }
 
 
@@ -26,11 +29,6 @@ nav ul {
   padding: 0;
   margin: 0;
   display: flex;
-  margin-right: 50px; 
-}
-
-nav ul li {
-  margin-right: 20px;
 }
 
 nav ul li:last-child {
@@ -52,3 +50,41 @@ nav ul li a:hover {
 .active {
   background-color: #edecec;
 }
+
+@media screen and (max-width: 650px) {
+header, ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  
+}
+
+.logo {
+  width: 100%;
+  text-align: center;
+  margin: 0;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+}
+}
+
+@media screen and (max-width: 410px) {
+  nav ul {
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-left: 15%;
+  }
+
+  nav ul li {
+      margin-right: 0; 
+      margin-bottom: 25px; 
+      width: 50%; 
+
+  }
+}
+
+
+
