@@ -4,7 +4,6 @@
     font-family: "Poppins", sans-serif;
 }
 
-/* About Section */
 .about-header {
     text-align: center;
     padding: 20px;
@@ -85,7 +84,6 @@
     max-height: 100%;
 }
 
-/* Container styles */
 .container {
     display: flex; 
     justify-content: center; 
