@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 @Component({
   selector: 'app-about-us',
@@ -32,6 +33,12 @@ export class AboutUsComponent implements OnInit {
       duration: 1.5,
       stagger: 0.5,
       ease: "back.out(1.7)",
+      scrollTrigger: {
+        trigger: ".skills-container",
+        start: "30% bottom", 
+        end: "bottom top", 
+        toggleActions: "play none none none",
+      }
     });
 
     gsap.from(".history-section", {
