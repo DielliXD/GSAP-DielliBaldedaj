@@ -6,6 +6,8 @@ import { AboutUsComponent } from './portfolio/about-us/about-us.component';
 import { ContactUsComponent } from './portfolio/contact-us/contact-us.component';
 
 
+
+
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'projects', component: ProjectsComponent },

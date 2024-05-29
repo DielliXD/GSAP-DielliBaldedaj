@@ -11,42 +11,57 @@ export class ContactUsComponent implements OnInit {
   constructor(private el: ElementRef) { }
 
   ngOnInit(): void {
+    this.animateBlackScreenAndContent();
+  }
+
+  animateBlackScreenAndContent(): void {
     const leftSide = this.el.nativeElement.querySelector('.left-side');
     const rightSide = this.el.nativeElement.querySelector('.right-side');
-    const customEase = gsap.parseEase('rough({template: none.out, strength: 2, points: 50, taper: "none", randomize: true})');
 
     gsap.timeline()
+      .from("#blackScreen", {
+        opacity: 1,
+        duration: 1
+      })
+      .to("#blackScreen", {
+        opacity: 0,
+        duration: 1,
+        delay: 1,
+        onComplete: () => {
+          document.getElementById('blackScreen')?.remove();
+        }
+      })
       .from(leftSide, {
         opacity: 0,
         x: -100,
-        duration: 1.5,
+        duration: 1,
         ease: 'power4.out'
-      })
+      }, '-=0.5')
       .from(rightSide, {
         opacity: 0,
         x: 100,
-        duration: 1.5,
+        duration: 1,
         ease: 'power4.out'
-      }, '-=1.2')
+      }, '-=0.8')
       .from('.details', {
         opacity: 0,
         y: -20,
-        duration: 0.8,
-        stagger: 0.3,
+        duration: 0.6,
+        stagger: 0.2,
         ease: 'back.out(1.5)'
-      }, '-=1.2')
+      }, '-=0.8')
       .from('.input-box', {
         opacity: 0,
-        duration: 0.8,
+        y: 20,
+        duration: 0.6,
         stagger: 0.2,
         ease: 'back.out(1.7)'
-      }, '-=0.8')
+      }, '-=0.6')
       .from('.button', {
-        opacity: 1,
+        opacity: 0,
         y: -20,
-        duration: 1.2,
+        duration: 0.8,
         ease: 'power4.out'
-      }, '-=0.5');
+      }, '-=0.4');
   }
-  }
-
+}

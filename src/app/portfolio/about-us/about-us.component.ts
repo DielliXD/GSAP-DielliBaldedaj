@@ -12,12 +12,29 @@ export class AboutUsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.animateIntro();
+  }
+
+  animateIntro(): void {
+    gsap.from("#blackScreen", { 
+      opacity: 0.9,
+      duration: 1,
+      delay: 0, 
+    });
+
+    gsap.from(".intro-text", {
+      opacity: 0,
+      duration: 1,
+      ease: "power2.out",
+      delay: 1
+    });
 
     gsap.from(".about-header", {
       opacity: 0,
       y: -10,
       duration: 1.5,
       ease: "power2.out",
+      delay: 4.5
     });
 
     gsap.from(".about-section", {
@@ -25,8 +42,21 @@ export class AboutUsComponent implements OnInit {
       opacity: 0,
       duration: 1.5,
       ease: "power2.out",
+      delay: 4.5
     });
 
+    gsap.to("#blackScreen", { 
+      opacity: 0, 
+      duration: 0.5,
+      delay: 4, 
+      onComplete: () => {
+        this.setupScrollAnimations(); 
+        document.getElementById('blackScreen')?.remove();
+      } 
+    });
+  }
+
+  setupScrollAnimations(): void {
     gsap.from(".skills-container .skill", {
       opacity: 0,
       scale: 0.5,

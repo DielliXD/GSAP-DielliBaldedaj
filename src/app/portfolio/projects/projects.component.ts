@@ -14,27 +14,54 @@ export class ProjectsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.setupScrollAnimations();
+    this.animateIntro();
   }
 
-  setupScrollAnimations(): void {
-    gsap.from(".video-container video", {
-      opacity: 0.3,
-      scale: 0.9,
+  animateIntro(): void {
+    const tl = gsap.timeline();
+    tl.to("#blackScreen", {
+      opacity: 1,
+      duration: 0.5,
+      ease: "power2.inOut",
+    });
+    tl.to("#blackScreen", {
+      duration: 1,
+      ease: "power2.inOut",
+    });
+    tl.to("#blackScreen", {
+      opacity: 0,
+      duration: 1,
+      ease: "power2.inOut",
+      onComplete: () => {
+        document.getElementById('blackScreen')?.remove();
+      }
+    });
+    tl.fromTo(".container, .animationfirst-container, .secondanimation-container, .thirdanimation-container",
+      { opacity: 0, scale: 0.5, rotationY: -90 },
+      {
+        opacity: 1,
+        scale: 1,
+        rotationY: 0,
+        duration: 1.5,
+        stagger: 0.2,
+      }
+    );
+    gsap.from(".image-container img", {
+      opacity: 0.6,
+      scale: 0.1,
       duration: 1.2,
       ease: "power2.out",
       scrollTrigger: {
-        trigger: ".video-container",
-        start: "top 80%",
-        end: "bottom 20%",
+        trigger: ".image-container",
+        start: "top 60%",
+        end: "bottom 30%",
         toggleActions: "play none none none",
       },
     });
-
     gsap.from(".text-container", {
       opacity: 0,
       x: -50,
-      duration: 1.2,
+      duration: 5.2,
       ease: "power2.out",
       scrollTrigger: {
         trigger: ".text-container",
@@ -43,7 +70,6 @@ export class ProjectsComponent implements OnInit {
         toggleActions: "play none none none",
       },
     });
-
     gsap.from(".animation-firstitem img", {
       opacity: 0.3,
       scale: 0.9,
@@ -56,7 +82,6 @@ export class ProjectsComponent implements OnInit {
         toggleActions: "play none none none",
       },
     });
-
     gsap.from(".secondanimation-container .animation-seconditem", {
       opacity: 0.3,
       y: 50,
@@ -69,7 +94,6 @@ export class ProjectsComponent implements OnInit {
         toggleActions: "play none none none",
       },
     });
-
     gsap.from(".thirdanimation-container .animation-thirditem", {
       opacity: 0.3,
       x: 50,
@@ -84,4 +108,5 @@ export class ProjectsComponent implements OnInit {
       },
     });
   }
+
 }
